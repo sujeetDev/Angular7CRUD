@@ -1,0 +1,24 @@
+<h4>List Invoice Page</h4>
+
+
+<div class="row">
+        <div class="col-lg-6">
+          <table class="table">
+            <thead>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Email</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of listData">
+                  <td >{{item.FirstName}}</td>
+                  <td>{{item.Address}}</td>
+                  <td>{{item.Email}}</td>
+                  <td><i class="fa fa-trash-o" aria-hidden="true" (click)="deleteUser(item.UOID)"></i></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>

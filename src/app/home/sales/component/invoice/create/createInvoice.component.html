@@ -1,0 +1,28 @@
+<h4>Create Invoice Page</h4>
+
+<div class="col-xs-12 col-12 col-md-5 col-lg-5 form-group">
+    <div class="form-group">
+      <div class="input-group">
+        <!-- <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" >         -->
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-lg-4">
+    <form  [formGroup]="userForm" (ngSubmit)="AddUser(userForm.value)">
+      <label>Name</label>
+      <input class="form-control" type="text" formControlName="FirstName">
+      <div *ngIf="isSubmitted && formControls.FirstName.errors" class="help-block">
+          <div *ngIf="formControls.FirstName.errors.required">Name is required</div>
+      </div>
+      <label>Address</label>
+      <input class="form-control" type="text" formControlName="Address">
+      <label>Email</label>
+      <input class="form-control" type="text" formControlName="Email">
+      <div *ngIf="isSubmitted && formControls.Email.errors" class="help-block">
+          <div *ngIf="formControls.Email.errors.required">Email is required</div>
+      </div>
+      <button class="btn btn-primary">Add</button>
+    </form>
+  </div>
+</div>
