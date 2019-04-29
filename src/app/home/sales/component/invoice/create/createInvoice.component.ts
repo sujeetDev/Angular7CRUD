@@ -16,7 +16,7 @@ export class createInvoiceComponent implements OnInit{
     constructor(private router: Router, private api:UserServices, private formBuilder: FormBuilder) { }
         
     userForm:FormGroup;
-    //userModel:user;
+    singleData:user;    
     //FirstName="";
     //Address="";
     //Email="";
@@ -25,8 +25,9 @@ export class createInvoiceComponent implements OnInit{
        this.userForm=this.formBuilder.group({
         FirstName:['', Validators.required],
         Address:[''],
-        Email:['',Validators.required]
+        Email:['',[Validators.required, Validators.email]]
        })
+       this.getUserById();
     }
     
     AddUser(form:NgForm){
@@ -40,5 +41,14 @@ export class createInvoiceComponent implements OnInit{
         })
     }
     get formControls() { return this.userForm.controls; }
+
+    getUserById(){
+        this.api.getUserById(2)
+        .subscribe(data=>{
+            this.singleData=data;
+        },(err)=>{
+            console.log(err);
+        })
+    }
     
 }
