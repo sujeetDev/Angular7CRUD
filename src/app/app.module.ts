@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import {pageNotFoundComponent} from './pagenotfound.component';
+import {MessageService} from './services/message.service';
+
 @NgModule({
   declarations: [
     AppComponent,pageNotFoundComponent
@@ -15,7 +17,7 @@ import {pageNotFoundComponent} from './pagenotfound.component';
     AppRoutingModule,
     HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

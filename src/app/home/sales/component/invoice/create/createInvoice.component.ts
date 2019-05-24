@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 //import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import {UserServices} from '../../../../../services/userLoging.services';
 import {user} from '../../../../../models/userModel';
+import {MessageService} from '../../../../../services/message.service';
 
 import { Router } from '@angular/router';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -13,7 +14,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 
 export class createInvoiceComponent implements OnInit{
    
-    constructor(private router: Router, private api:UserServices, private formBuilder: FormBuilder) { }
+    constructor(private router: Router, private api:UserServices, private formBuilder: FormBuilder, private messageService:MessageService) { }
         
     userForm:FormGroup;
     singleData:user;    
@@ -22,6 +23,7 @@ export class createInvoiceComponent implements OnInit{
     //Email="";
     isSubmitted  =  false;
     ngOnInit(){
+        this.sendMessage();
        this.userForm=this.formBuilder.group({
         FirstName:['', Validators.required],
         Address:[''],
@@ -29,6 +31,10 @@ export class createInvoiceComponent implements OnInit{
        })
        this.getUserById();
     }
+
+    sendMessage():void{
+        this.messageService.sendMessage("Create Invoice Page");
+      }
     
     AddUser(form:NgForm){
         this.isSubmitted = true;

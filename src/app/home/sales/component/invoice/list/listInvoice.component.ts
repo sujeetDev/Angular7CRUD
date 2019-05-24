@@ -2,6 +2,7 @@ import {Component, OnInit} from  '@angular/core';
 import {UserServices} from '../../../../../services/userLoging.services';
 import {user} from '../../../../../models/userModel';
 import {loginModel} from '../../../../../models/loginModel';
+import {MessageService} from '../../../../../services/message.service';
 
 @Component({
     selector:'listInvoice-app',
@@ -9,16 +10,21 @@ import {loginModel} from '../../../../../models/loginModel';
 })
 
 export class listInvoiceComponent implements OnInit{
-    constructor(private api:UserServices){}
+    constructor(private api:UserServices, private messageService:MessageService){}
 
     colorTheme = 'orange';
     listData:user[]=[];
     singleData:user;
 
     ngOnInit(){
+        this.sendMessage();
         this.getUserById();
         this.getAllUser();
     }
+
+    sendMessage():void{
+        this.messageService.sendMessage("List Invoice Page");
+      }
 
     getUserById(){
         this.api.getUserById(2)

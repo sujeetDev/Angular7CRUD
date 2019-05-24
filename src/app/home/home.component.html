@@ -1,6 +1,7 @@
 <button class="btn btn-lg btn-primary" [routerLink]="['/index']">Home</button>
 <button class="btn btn-lg btn-primary" [routerLink]="['/sales/createInvoice']">Create Invoice</button>
 <button class="btn btn-lg btn-primary" [routerLink]="['/sales/listInvoice']">List Invoice</button>
+<label class="form-control">{{pageName.text}}</label>
 <div class="container">
         <router-outlet></router-outlet>
 </div>
